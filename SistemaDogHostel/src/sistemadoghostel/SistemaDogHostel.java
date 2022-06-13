@@ -6,7 +6,7 @@ package sistemadoghostel;
 
 /**
  *
- * @author exact
+ * @author Vinicius Oruam
  */
 public class SistemaDogHostel {
 
