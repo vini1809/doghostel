@@ -36,9 +36,9 @@ public class TelaLogin extends javax.swing.JFrame {
         conect = Conexao.conector();
         //System.out.println("Conectado ao banco de dados MySql");
         if (conect != null) {
-            lblstatus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/dog+.png")));
+            lblstatus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/DBON.png")));
         } else {
-            lblstatus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/osso+.png")));
+            lblstatus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/DBOFF.png")));
         }
     }
     
@@ -99,7 +99,7 @@ public class TelaLogin extends javax.swing.JFrame {
         jButton2.setText("Sair");
         jButton2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
-        lblstatus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/dog+.png"))); // NOI18N
+        lblstatus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/DBON.png"))); // NOI18N
 
         javax.swing.GroupLayout painelImagemFundo2Layout = new javax.swing.GroupLayout(painelImagemFundo2);
         painelImagemFundo2.setLayout(painelImagemFundo2Layout);
@@ -131,7 +131,7 @@ public class TelaLogin extends javax.swing.JFrame {
                                 .addComponent(jLabel2))
                             .addGroup(painelImagemFundo2Layout.createSequentialGroup()
                                 .addGap(80, 80, 80)
-                                .addComponent(lblstatus, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(lblstatus)))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         painelImagemFundo2Layout.setVerticalGroup(
@@ -156,7 +156,7 @@ public class TelaLogin extends javax.swing.JFrame {
                         .addGroup(painelImagemFundo2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(138, Short.MAX_VALUE))
+                .addContainerGap(102, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

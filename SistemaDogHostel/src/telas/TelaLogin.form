@@ -88,7 +88,7 @@
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace min="-2" pref="80" max="-2" attributes="0"/>
-                                  <Component id="lblstatus" min="-2" pref="30" max="-2" attributes="0"/>
+                                  <Component id="lblstatus" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace max="32767" attributes="0"/>
@@ -122,7 +122,7 @@
                           </Group>
                       </Group>
                   </Group>
-                  <EmptySpace pref="138" max="32767" attributes="0"/>
+                  <EmptySpace pref="102" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -212,7 +212,7 @@
         <Component class="javax.swing.JLabel" name="lblstatus">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/imagens/dog+.png"/>
+              <Image iconType="3" name="/imagens/DBON.png"/>
             </Property>
           </Properties>
         </Component>
