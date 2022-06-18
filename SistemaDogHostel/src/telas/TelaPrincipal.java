@@ -1,12 +1,16 @@
 
 package telas;
+
 import conexao.Conexao;
+import java.awt.event.WindowAdapter;
 import java.text.DateFormat;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.Calendar;
 import java.util.Date;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.UIManager;
 
 public class TelaPrincipal extends javax.swing.JFrame {
 
@@ -169,6 +173,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jButton1.setText("Logout");
         jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton1.setDebugGraphicsOptions(javax.swing.DebugGraphics.BUFFERED_OPTION);
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jSeparator4.setBackground(new java.awt.Color(0, 0, 0));
         jSeparator4.setForeground(new java.awt.Color(0, 0, 0));
@@ -518,6 +527,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jMenuBar1.add(jMenu7);
 
         jMenu8.setText("Sair");
+        jMenu8.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenu8MouseClicked(evt);
+            }
+        });
         jMenuBar1.add(jMenu8);
 
         setJMenuBar(jMenuBar1);
@@ -551,7 +565,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         TelaCadHospedes tela = new TelaCadHospedes();
         telaFundo.add(tela);
         tela.setVisible(true);
-        
+
     }//GEN-LAST:event_menuCadHospedes1ActionPerformed
 
     private void menuCadHospedes1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuCadHospedes1MouseClicked
@@ -564,10 +578,27 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
 
-		Date data = new Date();
-		DateFormat formataData = DateFormat.getDateInstance(DateFormat.SHORT);
-                lbData.setText(formataData.format(data));
+        Date data = new Date();
+        DateFormat formataData = DateFormat.getDateInstance(DateFormat.SHORT);
+        lbData.setText(formataData.format(data));
     }//GEN-LAST:event_formWindowActivated
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        int trocaUsuario = 0;
+
+        if (trocaUsuario == JOptionPane.YES_OPTION) {
+            TelaLogin log = new TelaLogin();
+            log.setVisible(true);
+            this.dispose();
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jMenu8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu8MouseClicked
+
+        Object[] options = { "Sim", "Não" }; 
+        int i = JOptionPane.showOptionDialog(null, "Tem certeza que deseja sair?", "Saída", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]); if (i == JOptionPane.YES_OPTION) { System.exit(0); }
+           
+    }//GEN-LAST:event_jMenu8MouseClicked
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
