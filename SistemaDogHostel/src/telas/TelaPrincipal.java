@@ -323,6 +323,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
         menuConHospedes.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         menuConHospedes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/viewmag_view_search_find_11032.png"))); // NOI18N
         menuConHospedes.setText("Consultar");
+        menuConHospedes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuConHospedesActionPerformed(evt);
+            }
+        });
         jMenu12.add(menuConHospedes);
 
         jMenu11.add(jMenu12);
@@ -336,6 +341,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
         menuCadQuartos.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         menuCadQuartos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/addhouse.png"))); // NOI18N
         menuCadQuartos.setText("Cadastrar");
+        menuCadQuartos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuCadQuartosActionPerformed(evt);
+            }
+        });
         jMenu13.add(menuCadQuartos);
 
         menuConQuartos.setBackground(new java.awt.Color(204, 204, 204));
@@ -606,6 +616,16 @@ public class TelaPrincipal extends javax.swing.JFrame {
         int i = JOptionPane.showOptionDialog(null, "Tem certeza que deseja sair?", "Saída", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]); if (i == JOptionPane.YES_OPTION) { System.exit(0); }
            
     }//GEN-LAST:event_jMenu8MouseClicked
+
+    private void menuConHospedesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuConHospedesActionPerformed
+        TelaConHospedes tela = new TelaConHospedes();
+        telaFundo.add(tela);
+        tela.setVisible(true);
+    }//GEN-LAST:event_menuConHospedesActionPerformed
+
+    private void menuCadQuartosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuCadQuartosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_menuCadQuartosActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
