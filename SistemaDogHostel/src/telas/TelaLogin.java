@@ -98,6 +98,11 @@ public class TelaLogin extends javax.swing.JFrame {
         jButton2.setFont(new java.awt.Font("Arial Black", 0, 18)); // NOI18N
         jButton2.setText("Sair");
         jButton2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         lblstatus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/DBON.png"))); // NOI18N
 
@@ -179,6 +184,10 @@ public class TelaLogin extends javax.swing.JFrame {
     logar();
     
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        dispose();
+    }//GEN-LAST:event_jButton2ActionPerformed
     
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(() -> {

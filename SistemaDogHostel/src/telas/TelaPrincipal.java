@@ -123,7 +123,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         lbData.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         lbData.setForeground(new java.awt.Color(0, 0, 255));
-        lbData.setText("Horário do Sistema");
+        lbData.setText("date Sistema");
         lbData.setToolTipText("");
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -137,11 +137,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jLabel7.setText("N. Acesso:");
         jLabel7.setToolTipText("");
 
-        jLabel8.setText("Nome");
+        jLabel8.setText("*");
 
-        jLabel9.setText("texto");
+        jLabel9.setText("*");
 
-        jLabel10.setText("texto");
+        jLabel10.setText("*");
 
         jCalendar2.setDecorationBackgroundVisible(false);
         jCalendar2.setDoubleBuffered(false);
@@ -205,13 +205,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
                         .addComponent(jButton1)
                         .addGap(70, 70, 70))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lbData)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(26, 26, 26)
-                                .addComponent(jLabel3)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(lbData, javax.swing.GroupLayout.Alignment.TRAILING))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
             .addGroup(jPanel2Layout.createSequentialGroup()
@@ -520,13 +518,22 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu5);
 
-        jMenu6.setText("Segurança   |");
+        jMenu6.setBackground(new java.awt.Color(204, 204, 204));
+        jMenu6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/seg.png"))); // NOI18N
+        jMenu6.setText("Segurança|");
+        jMenu6.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
         jMenuBar1.add(jMenu6);
 
-        jMenu7.setText("Ferramentas   |");
+        jMenu7.setBackground(new java.awt.Color(204, 204, 204));
+        jMenu7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/engrenagem.png"))); // NOI18N
+        jMenu7.setText("Ferramentas|");
+        jMenu7.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
         jMenuBar1.add(jMenu7);
 
+        jMenu8.setBackground(new java.awt.Color(204, 204, 204));
+        jMenu8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/turn-off-icon-png-14567.png"))); // NOI18N
         jMenu8.setText("Sair");
+        jMenu8.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
         jMenu8.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jMenu8MouseClicked(evt);
