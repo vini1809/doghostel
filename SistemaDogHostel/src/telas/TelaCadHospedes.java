@@ -20,29 +20,27 @@ public class TelaCadHospedes extends javax.swing.JInternalFrame {
     }
 
     private void adicionar() {
-        String sql = "insert into tbclientes(idtbclientes,nomecli,corcli,racacli, maecli, paicli, telmaecli, telpaicli, ruacli, ncli, complementocli, refcli, bairrocli, cidcli, CEPcli, emailcli ) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        String sql = "insert into tbclientes(idtbclientes,nomecli,corcli,racacli,datadenasccli, maecli, paicli, telmaecli, telpaicli, ruacli, ncli, complementocli, refcli, bairrocli, cidcli, CEPcli, emailcli ) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
         try {
             conexao = Conexao.conector();
             pst = conexao.prepareStatement(sql);
             pst.setString(1, txtCliId.getText());
             pst.setString(2, txtCliNome.getText());
-            pst.setString(3, txtCliRaca.getText());
-            //pst.setString(4, txtCliDataNasc.getText());
-            //pst.setString(5, txtCliM.getText());
-            //pst.setString(6, txtCliF.getText());
-            pst.setString(4, txtCliCor.getText());
-            pst.setString(5, txtCliMae.getText());
-            pst.setString(6, txtCliPai.getText());
-            pst.setString(7, txtCliTelMae.getText());
-            pst.setString(8, txtCliTelPai.getText());
-            pst.setString(9, txtCliRua.getText());
-            pst.setString(10, txtCliN.getText());
-            pst.setString(11, txtCliComp.getText());
-            pst.setString(12, txtCliRef.getText());
-            pst.setString(13, txtCliBairro.getText());
-            pst.setString(14, txtCliCid.getText());
-            pst.setString(15, txtCliCEP.getText());
-            pst.setString(16, txtCliEmail.getText());
+            pst.setString(3, txtCliCor.getText());
+            pst.setString(4, txtCliRaca.getText());
+            pst.setString(5, txtCliDataNasc.getText());
+            pst.setString(6, txtCliMae.getText());
+            pst.setString(7, txtCliPai.getText());
+            pst.setString(8, txtCliTelMae.getText());
+            pst.setString(9, txtCliTelPai.getText());
+            pst.setString(10, txtCliRua.getText());
+            pst.setString(11, txtCliN.getText());
+            pst.setString(12, txtCliComp.getText());
+            pst.setString(13, txtCliRef.getText());
+            pst.setString(14, txtCliBairro.getText());
+            pst.setString(15, txtCliCid.getText());
+            pst.setString(16, txtCliCEP.getText());
+            pst.setString(17, txtCliEmail.getText());
 
             if ((txtCliNome.getText().isEmpty()) || (txtCliTelMae.getText().isEmpty())) {
                 JOptionPane.showMessageDialog(null, "Preencha todos os campos obrigatórios");
@@ -68,9 +66,7 @@ public class TelaCadHospedes extends javax.swing.JInternalFrame {
         txtCliId.setText(null);
         txtCliNome.setText(null);
         txtCliRaca.setText(null);
-        //txtCliDataNasc.setText(null);
-        //txtCliM.setText(null);
-        //txtCliF.setText(null);
+        txtCliDataNasc.setText(null);
         txtCliCor.setText(null);
         txtCliMae.setText(null);
         txtCliPai.setText(null);
@@ -101,13 +97,12 @@ public class TelaCadHospedes extends javax.swing.JInternalFrame {
         jLabel3 = new javax.swing.JLabel();
         txtCliDataNasc = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        txtCliM = new javax.swing.JCheckBox();
-        txtCliF = new javax.swing.JCheckBox();
         jLabel5 = new javax.swing.JLabel();
         txtCliCor = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         jLabel20 = new javax.swing.JLabel();
         txtCliId = new javax.swing.JTextField();
+        jComboBox1 = new javax.swing.JComboBox<>();
         jPanel1 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         txtCliMae = new javax.swing.JTextField();
@@ -161,20 +156,6 @@ public class TelaCadHospedes extends javax.swing.JInternalFrame {
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel4.setText("Sexo:");
 
-        txtCliM.setText("Macho");
-        txtCliM.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtCliMActionPerformed(evt);
-            }
-        });
-
-        txtCliF.setText("Femea");
-        txtCliF.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtCliFActionPerformed(evt);
-            }
-        });
-
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel5.setText("Cor:");
 
@@ -194,6 +175,13 @@ public class TelaCadHospedes extends javax.swing.JInternalFrame {
             }
         });
 
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Macho", "Femea" }));
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -202,36 +190,35 @@ public class TelaCadHospedes extends javax.swing.JInternalFrame {
                 .addGap(20, 20, 20)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jLabel4)
-                        .addGap(18, 18, 18)
-                        .addComponent(txtCliM)
+                        .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtCliF))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addComponent(jLabel1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtCliNome, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(txtCliNome, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(jPanel3Layout.createSequentialGroup()
+                            .addComponent(jLabel2)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(txtCliRaca, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel3Layout.createSequentialGroup()
+                            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                                     .addComponent(jLabel3)
-                                    .addGap(11, 11, 11)
-                                    .addComponent(txtCliDataNasc, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGap(11, 11, 11))
                                 .addGroup(jPanel3Layout.createSequentialGroup()
-                                    .addComponent(jLabel2)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(txtCliRaca, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addComponent(jLabel20)
-                                .addGap(14, 14, 14)
-                                .addComponent(txtCliId))
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addComponent(jLabel5)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtCliCor, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                    .addComponent(jLabel4)
+                                    .addGap(59, 59, 59)))
+                            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtCliDataNasc, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(jLabel20)
+                        .addGap(14, 14, 14)
+                        .addComponent(txtCliId))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(jLabel5)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtCliCor, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 70, Short.MAX_VALUE)
                 .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(46, 46, 46))
@@ -252,19 +239,19 @@ public class TelaCadHospedes extends javax.swing.JInternalFrame {
                             .addComponent(jLabel2)
                             .addComponent(txtCliRaca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel3)
-                            .addComponent(txtCliDataNasc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(jLabel20)
-                                .addComponent(txtCliId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(txtCliId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLabel3)
+                                .addComponent(txtCliDataNasc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel4)
-                            .addComponent(txtCliM)
-                            .addComponent(txtCliF)))
+                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(15, Short.MAX_VALUE))
+                .addContainerGap(17, Short.MAX_VALUE))
         );
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Proprietário", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Courier New", 1, 18))); // NOI18N
@@ -487,7 +474,7 @@ public class TelaCadHospedes extends javax.swing.JInternalFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSalvar)
                     .addComponent(btnSair))
-                .addContainerGap(51, Short.MAX_VALUE))
+                .addContainerGap(53, Short.MAX_VALUE))
         );
 
         jScrollPane1.setViewportView(jPanel2);
@@ -514,14 +501,6 @@ public class TelaCadHospedes extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtCliDataNascActionPerformed
 
-    private void txtCliMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCliMActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtCliMActionPerformed
-
-    private void txtCliFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCliFActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtCliFActionPerformed
-
     private void txtCliCidActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCliCidActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtCliCidActionPerformed
@@ -546,10 +525,15 @@ public class TelaCadHospedes extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtCliIdActionPerformed
 
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnSair;
     private javax.swing.JButton btnSalvar;
+    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -581,9 +565,7 @@ public class TelaCadHospedes extends javax.swing.JInternalFrame {
     private javax.swing.JTextField txtCliCor;
     private javax.swing.JTextField txtCliDataNasc;
     private javax.swing.JTextField txtCliEmail;
-    private javax.swing.JCheckBox txtCliF;
     private javax.swing.JTextField txtCliId;
-    private javax.swing.JCheckBox txtCliM;
     private javax.swing.JTextField txtCliMae;
     private javax.swing.JTextField txtCliN;
     private javax.swing.JTextField txtCliNome;
