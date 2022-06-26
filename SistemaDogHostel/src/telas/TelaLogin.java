@@ -6,31 +6,43 @@ import conexao.Conexao;
 import javax.swing.JOptionPane;
 
 public class TelaLogin extends javax.swing.JFrame {
-    
+
     Connection conect = null;
     PreparedStatement pst = null;
     ResultSet rs = null;
-    
+
     public void logar() {
         String sql = "SELECT * FROM tbusuario WHERE login=? AND senha =?";
         try {
-            
+
             pst = conect.prepareStatement(sql);
             pst.setString(1, txtUsuario.getText());
             pst.setString(2, txtSenha.getText());
-            
+
             rs = pst.executeQuery();
             if (rs.next()) {
-                TelaPrincipal principal = new TelaPrincipal();
-                principal.setVisible(true);
+                String perfil = rs.getString(6);
+                if (perfil.equals("admin")) {
+                    TelaPrincipal principal = new TelaPrincipal();
+                    principal.setVisible(true);
+                    TelaPrincipal.lblUsuario.setText(rs.getString(2));
+                    TelaPrincipal.lblNAcesso.setText(rs.getString(6));
+                    this.dispose();
+                } else {
+                    TelaPrincipal principal = new TelaPrincipal();
+                    principal.setVisible(true);
+                    TelaPrincipal.lblUsuario.setText(rs.getString(2));
+                    TelaPrincipal.lblNAcesso.setText(rs.getString(6));
+                    this.dispose();
+                }
             } else {
-                JOptionPane.showMessageDialog(null, "Usario e/ou senha inválido(s)");
+                JOptionPane.showMessageDialog(null, "Usuário e/ou senha inválido(s)");
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);
         }
     }
-    
+
     public TelaLogin() {
         initComponents();
         conect = Conexao.conector();
@@ -41,7 +53,7 @@ public class TelaLogin extends javax.swing.JFrame {
             lblstatus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/DBOFF.png")));
         }
     }
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -88,6 +100,7 @@ public class TelaLogin extends javax.swing.JFrame {
         jButton1.setFont(new java.awt.Font("Arial Black", 0, 18)); // NOI18N
         jButton1.setText("Entrar");
         jButton1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -180,15 +193,13 @@ public class TelaLogin extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        
-    logar();
-    
+        logar();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
-    
+
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(() -> {
             new TelaLogin().setVisible(true);

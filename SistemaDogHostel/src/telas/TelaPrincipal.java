@@ -23,6 +23,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        brownSugar1 = new com.jgoodies.looks.plastic.theme.BrownSugar();
         jPanel1 = new javax.swing.JPanel();
         jSeparator1 = new javax.swing.JSeparator();
         jPanel2 = new javax.swing.JPanel();
@@ -34,9 +35,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
+        lblUsuario = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
+        lblNAcesso = new javax.swing.JLabel();
         jCalendar2 = new com.toedter.calendar.JCalendar();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
@@ -137,11 +138,13 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jLabel7.setText("N. Acesso:");
         jLabel7.setToolTipText("");
 
-        jLabel8.setText("*");
+        lblUsuario.setForeground(new java.awt.Color(51, 51, 255));
+        lblUsuario.setText("*");
 
         jLabel9.setText("*");
 
-        jLabel10.setText("*");
+        lblNAcesso.setForeground(new java.awt.Color(51, 51, 255));
+        lblNAcesso.setText("*");
 
         jCalendar2.setDecorationBackgroundVisible(false);
         jCalendar2.setDoubleBuffered(false);
@@ -198,11 +201,12 @@ public class TelaPrincipal extends javax.swing.JFrame {
                             .addComponent(jLabel7))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton1)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jButton1))
+                            .addComponent(lblUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(lblNAcesso, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(70, 70, 70))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -245,7 +249,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(jLabel8))
+                    .addComponent(lblUsuario))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
@@ -254,7 +258,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
-                    .addComponent(jLabel10))
+                    .addComponent(lblNAcesso))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -301,12 +305,14 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jMenu12.setBackground(new java.awt.Color(204, 204, 204));
         jMenu12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/haski_dog_animal_15968.png"))); // NOI18N
         jMenu12.setText("Hospedes");
+        jMenu12.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jMenu12.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
 
         menuCadHospedes1.setBackground(new java.awt.Color(204, 204, 204));
         menuCadHospedes1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         menuCadHospedes1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/dog+.png"))); // NOI18N
         menuCadHospedes1.setText("Cadastrar");
+        menuCadHospedes1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         menuCadHospedes1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 menuCadHospedes1MouseClicked(evt);
@@ -323,6 +329,12 @@ public class TelaPrincipal extends javax.swing.JFrame {
         menuConHospedes.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         menuConHospedes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/viewmag_view_search_find_11032.png"))); // NOI18N
         menuConHospedes.setText("Consultar");
+        menuConHospedes.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        menuConHospedes.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                menuConHospedesMouseClicked(evt);
+            }
+        });
         menuConHospedes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 menuConHospedesActionPerformed(evt);
@@ -335,12 +347,14 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jMenu13.setBackground(new java.awt.Color(204, 204, 204));
         jMenu13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/place-dog-house-building-landmark_108515.png"))); // NOI18N
         jMenu13.setText("Quartos");
+        jMenu13.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jMenu13.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
 
         menuCadQuartos.setBackground(new java.awt.Color(204, 204, 204));
         menuCadQuartos.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         menuCadQuartos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/addhouse.png"))); // NOI18N
         menuCadQuartos.setText("Cadastrar");
+        menuCadQuartos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         menuCadQuartos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 menuCadQuartosActionPerformed(evt);
@@ -352,6 +366,12 @@ public class TelaPrincipal extends javax.swing.JFrame {
         menuConQuartos.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         menuConQuartos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/viewmag_view_search_find_11032.png"))); // NOI18N
         menuConQuartos.setText("Consultar");
+        menuConQuartos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        menuConQuartos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuConQuartosActionPerformed(evt);
+            }
+        });
         jMenu13.add(menuConQuartos);
 
         jMenu11.add(jMenu13);
@@ -378,6 +398,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         Fornecedores.setBackground(new java.awt.Color(204, 204, 204));
         Fornecedores.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/truck_icon-icons.com_52347.png"))); // NOI18N
         Fornecedores.setText("Fornecedores");
+        Fornecedores.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         Fornecedores.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
 
         menuCadFornecedores.setBackground(new java.awt.Color(204, 204, 204));
@@ -397,18 +418,31 @@ public class TelaPrincipal extends javax.swing.JFrame {
         Produtos.setBackground(new java.awt.Color(204, 204, 204));
         Produtos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/household_chores_feeding_pet_feed_dog_food_icon_133347.png"))); // NOI18N
         Produtos.setText("Produtos");
+        Produtos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         Produtos.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
 
         menuCadProdutos.setBackground(new java.awt.Color(204, 204, 204));
         menuCadProdutos.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         menuCadProdutos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/osso+.png"))); // NOI18N
         menuCadProdutos.setText("Cadastrar");
+        menuCadProdutos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        menuCadProdutos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuCadProdutosActionPerformed(evt);
+            }
+        });
         Produtos.add(menuCadProdutos);
 
         menuConProdutos.setBackground(new java.awt.Color(204, 204, 204));
         menuConProdutos.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         menuConProdutos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/viewmag_view_search_find_11032.png"))); // NOI18N
         menuConProdutos.setText("Consultar");
+        menuConProdutos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        menuConProdutos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuConProdutosActionPerformed(evt);
+            }
+        });
         Produtos.add(menuConProdutos);
 
         jMenu11.add(Produtos);
@@ -416,18 +450,31 @@ public class TelaPrincipal extends javax.swing.JFrame {
         Servicos.setBackground(new java.awt.Color(204, 204, 204));
         Servicos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/pet-animal-pets-paw-dog-cat-paws_108559.png"))); // NOI18N
         Servicos.setText("Servicos");
+        Servicos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         Servicos.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
 
         menuCadServicos.setBackground(new java.awt.Color(204, 204, 204));
         menuCadServicos.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         menuCadServicos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/dogBanhopng.png"))); // NOI18N
         menuCadServicos.setText("Cadastrar");
+        menuCadServicos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        menuCadServicos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuCadServicosActionPerformed(evt);
+            }
+        });
         Servicos.add(menuCadServicos);
 
         menuConServicos.setBackground(new java.awt.Color(204, 204, 204));
         menuConServicos.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         menuConServicos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/viewmag_view_search_find_11032.png"))); // NOI18N
         menuConServicos.setText("Consultar");
+        menuConServicos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        menuConServicos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuConServicosActionPerformed(evt);
+            }
+        });
         Servicos.add(menuConServicos);
 
         jMenu11.add(Servicos);
@@ -438,23 +485,37 @@ public class TelaPrincipal extends javax.swing.JFrame {
         CadReserva.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/calendarDog.png"))); // NOI18N
         CadReserva.setText("Reservas|");
         CadReserva.setToolTipText("");
+        CadReserva.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         CadReserva.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
 
         jMenu1.setBackground(new java.awt.Color(204, 204, 204));
         jMenu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/addDate.png"))); // NOI18N
         jMenu1.setText("Cadastrar Reserva");
+        jMenu1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jMenu1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jMenu1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenu1MouseClicked(evt);
+            }
+        });
+        jMenu1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenu1ActionPerformed(evt);
+            }
+        });
         CadReserva.add(jMenu1);
 
         ConReserva.setBackground(new java.awt.Color(204, 204, 204));
         ConReserva.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/searchDate.png"))); // NOI18N
         ConReserva.setText("Consultar Reserva");
+        ConReserva.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         ConReserva.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         CadReserva.add(ConReserva);
 
         FinReserva.setBackground(new java.awt.Color(204, 204, 204));
         FinReserva.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/okayDate.png"))); // NOI18N
         FinReserva.setText("Finalizar Reserva");
+        FinReserva.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         FinReserva.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         CadReserva.add(FinReserva);
 
@@ -463,17 +524,20 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jMenu3.setBackground(new java.awt.Color(204, 204, 204));
         jMenu3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Carrinho.png"))); // NOI18N
         jMenu3.setText("Consumo|");
+        jMenu3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jMenu3.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
 
         Produtos1.setBackground(new java.awt.Color(204, 204, 204));
         Produtos1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/household_chores_feeding_pet_feed_dog_food_icon_133347.png"))); // NOI18N
         Produtos1.setText("Produtos");
+        Produtos1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         Produtos1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jMenu3.add(Produtos1);
 
         Servicos1.setBackground(new java.awt.Color(204, 204, 204));
         Servicos1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/pet-animal-pets-paw-dog-cat-paws_108559.png"))); // NOI18N
         Servicos1.setText("Servicos");
+        Servicos1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         Servicos1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jMenu3.add(Servicos1);
 
@@ -482,11 +546,13 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jMenu4.setBackground(new java.awt.Color(204, 204, 204));
         jMenu4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Financial-Budget-Transparent-Background.png"))); // NOI18N
         jMenu4.setText("Financeiro|");
+        jMenu4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jMenu4.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
 
         jMenu2.setBackground(new java.awt.Color(204, 204, 204));
         jMenu2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/pagar.png"))); // NOI18N
         jMenu2.setText("Contas à pagar");
+        jMenu2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jMenu2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
 
         jMenuItem1.setText("jMenuItem1");
@@ -500,6 +566,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jMenu9.setBackground(new java.awt.Color(204, 204, 204));
         jMenu9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/receber.png"))); // NOI18N
         jMenu9.setText("Contas à receber");
+        jMenu9.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jMenu9.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
 
         jMenuItem2.setText("jMenuItem2");
@@ -513,6 +580,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jMenu10.setBackground(new java.awt.Color(204, 204, 204));
         jMenu10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/balanco.png"))); // NOI18N
         jMenu10.setText("Balanço");
+        jMenu10.setContentAreaFilled(false);
+        jMenu10.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jMenu10.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jMenu4.add(jMenu10);
 
@@ -521,6 +590,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jMenu5.setBackground(new java.awt.Color(204, 204, 204));
         jMenu5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/relatorio.png"))); // NOI18N
         jMenu5.setText("Relatórios|");
+        jMenu5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jMenu5.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
 
         jMenu14.setText("jMenu14");
@@ -531,18 +601,21 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jMenu6.setBackground(new java.awt.Color(204, 204, 204));
         jMenu6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/seg.png"))); // NOI18N
         jMenu6.setText("Segurança|");
+        jMenu6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jMenu6.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
         jMenuBar1.add(jMenu6);
 
         jMenu7.setBackground(new java.awt.Color(204, 204, 204));
         jMenu7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/engrenagem.png"))); // NOI18N
         jMenu7.setText("Ferramentas|");
+        jMenu7.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jMenu7.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
         jMenuBar1.add(jMenu7);
 
         jMenu8.setBackground(new java.awt.Color(204, 204, 204));
         jMenu8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/turn-off-icon-png-14567.png"))); // NOI18N
         jMenu8.setText("Sair");
+        jMenu8.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jMenu8.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
         jMenu8.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -624,34 +697,56 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_menuConHospedesActionPerformed
 
     private void menuCadQuartosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuCadQuartosActionPerformed
-        // TODO add your handling code here:
+        TelaCadQuartos tela = new TelaCadQuartos();
+        telaFundo.add(tela);
+        tela.setVisible(true);
     }//GEN-LAST:event_menuCadQuartosActionPerformed
 
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Windows".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(TelaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(TelaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(TelaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(TelaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
+    private void jMenu1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu1ActionPerformed
 
-        /* Create and display the form */
+    }//GEN-LAST:event_jMenu1ActionPerformed
+
+    private void jMenu1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu1MouseClicked
+                 TelaCadReservas tela = new TelaCadReservas();
+        telaFundo.add(tela);
+        tela.setVisible(true);
+    }//GEN-LAST:event_jMenu1MouseClicked
+
+    private void menuConHospedesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuConHospedesMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_menuConHospedesMouseClicked
+
+    private void menuConQuartosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuConQuartosActionPerformed
+        TelaConQuartos tela = new TelaConQuartos();
+        telaFundo.add(tela);
+        tela.setVisible(true);
+    }//GEN-LAST:event_menuConQuartosActionPerformed
+
+    private void menuCadProdutosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuCadProdutosActionPerformed
+                 TelaCadProdutos tela = new TelaCadProdutos();
+        telaFundo.add(tela);
+        tela.setVisible(true);
+    }//GEN-LAST:event_menuCadProdutosActionPerformed
+
+    private void menuConProdutosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuConProdutosActionPerformed
+        TelaConProdutos tela = new TelaConProdutos();
+        telaFundo.add(tela);
+        tela.setVisible(true);
+    }//GEN-LAST:event_menuConProdutosActionPerformed
+
+    private void menuCadServicosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuCadServicosActionPerformed
+                     TelaCadServicos tela = new TelaCadServicos();
+        telaFundo.add(tela);
+        tela.setVisible(true);
+    }//GEN-LAST:event_menuCadServicosActionPerformed
+
+    private void menuConServicosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuConServicosActionPerformed
+         TelaConServicos tela = new TelaConServicos();
+        telaFundo.add(tela);
+        tela.setVisible(true);
+    }//GEN-LAST:event_menuConServicosActionPerformed
+
+    public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new TelaPrincipal().setVisible(true);
@@ -668,11 +763,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenu Produtos1;
     private javax.swing.JMenu Servicos;
     private javax.swing.JMenu Servicos1;
+    private com.jgoodies.looks.plastic.theme.BrownSugar brownSugar1;
     private javax.swing.JButton jButton1;
     private com.toedter.calendar.JCalendar jCalendar2;
     private com.toedter.calendar.JCalendar jCalendar3;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel14;
@@ -681,7 +776,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu10;
@@ -709,6 +803,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JLabel lbData;
+    public static javax.swing.JLabel lblNAcesso;
+    public static javax.swing.JLabel lblUsuario;
     private javax.swing.JMenuItem menuCadFornecedores;
     private javax.swing.JMenuItem menuCadFuncionarios;
     private javax.swing.JMenuItem menuCadHospedes1;
@@ -725,6 +821,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     private JLabel setText(String format) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 }

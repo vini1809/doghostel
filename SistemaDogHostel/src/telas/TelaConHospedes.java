@@ -17,95 +17,50 @@ public class TelaConHospedes extends javax.swing.JInternalFrame {
 
     }
 
-    private void adicionar() {
-        String sql = "insert into tbclientes(idtbclientes,nomecli,corcli,racacli,datadenasccli, maecli, paicli, telmaecli, telpaicli, ruacli, ncli, complementocli, refcli, bairrocli, cidcli, CEPcli, emailcli ) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
-        try {
-            conexao = Conexao.conector();
-            pst = conexao.prepareStatement(sql);
-            pst.setString(1, txtCliId.getText());
-            pst.setString(2, txtCliNome.getText());
-            pst.setString(3, txtCliCor.getText());
-            pst.setString(4, txtCliRaca.getText());
-            pst.setString(5, txtCliDataNasc.getText());
-            pst.setString(6, txtCliMae.getText());
-            pst.setString(7, txtCliPai.getText());
-            pst.setString(8, txtCliTelMae.getText());
-            pst.setString(9, txtCliTelPai.getText());
-            pst.setString(10, txtCliRua.getText());
-            pst.setString(11, txtCliN.getText());
-            pst.setString(12, txtCliComp.getText());
-            pst.setString(13, txtCliRef.getText());
-            pst.setString(14, txtCliBairro.getText());
-            pst.setString(15, txtCliCid.getText());
-            pst.setString(16, txtCliCEP.getText());
-            pst.setString(17, txtCliEmail.getText());
-
-            if ((txtCliNome.getText().isEmpty()) || (txtCliTelMae.getText().isEmpty())) {
-                JOptionPane.showMessageDialog(null, "Preencha todos os campos obrigatórios");
-            } else {
-                int adicionado = pst.executeUpdate();
-                if (adicionado > 0) {
-                    JOptionPane.showMessageDialog(null, "Usuário adicionado com sucesso");
-                    limpar();
+     private void pesquisarCliente() {
+        if (txtCliId.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Informe o Id do usuário");
+            txtCliId.requestFocus();
+        } else {
+            String sql = "select * from tbclientes where idtbclientes=?";
+            try {
+                conexao = Conexao.conector();
+                pst = conexao.prepareStatement(sql);
+                pst.setString(1, txtCliId.getText());
+                rs = pst.executeQuery();
+                if (rs.next()) {
+                    txtCliNome.setText(rs.getString(2));
+                    txtCliCor.setText(rs.getString(3));
+                    txtCliRaca.setText(rs.getString(4));
+                    txtCliDataNasc.setText(rs.getString(5));
+                    cboCat.setSelectedItem(rs.getString(6));
+                    txtCliMae.setText(rs.getString(7));
+                    txtCliPai.setText(rs.getString(8));
+                    txtCliTelMae.setText(rs.getString(9));
+                    txtCliTelPai.setText(rs.getString(10));
+                    txtCliRua.setText(rs.getString(11));
+                    txtCliN.setText(rs.getString(12));
+                    txtCliComp.setText(rs.getString(13));
+                    txtCliRef.setText(rs.getString(14));
+                    txtCliBairro.setText(rs.getString(15));
+                    txtCliCid.setText(rs.getString(16));
+                    txtCliCEP.setText(rs.getString(17));
+                    txtCliEmail.setText(rs.getString(18));
+                    
+                } else {
+                    JOptionPane.showMessageDialog(null, "Não encontrado");
+                 
+                }
+            } catch (HeadlessException | SQLException e) {
+                JOptionPane.showMessageDialog(null, e);
+            } finally {
+                try {
+                    conexao.close();
+                } catch (SQLException ex) {
+                    JOptionPane.showMessageDialog(null, ex);
                 }
             }
-        } catch (HeadlessException | SQLException e) {
-            JOptionPane.showMessageDialog(null, e);
-        } finally {
-            try {
-                conexao.close();
-            } catch (SQLException ex) {
-                JOptionPane.showMessageDialog(null, ex);
-            }
         }
-    }
-
-    private void pesquisarCliente() {
-        String sql = "select idtbclientes as id,nomecli as nome,corcli as cor,racacli as raca,datadenasccli as dnasc, maecli as mae, paicli as pai, telmaecli as telmae, telpaicli as telpai, ruacli as rua, ncli as numero, complementocli as comp, refcli as referencia, bairrocli as bairro, cidcli as cidade, CEPcli as CEP, emailcli as email from tbclientes where nomecli like ?";
-        try {
-            conexao = Conexao.conector();
-            pst = conexao.prepareStatement(sql);
-            pst.setString(1, txtCliPesquisar.getText() + "%");
-            rs = pst.executeQuery();
-            tblClientes.setModel(DbUtils.resultSetToTableModel(rs));
-        } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, e);
-        } finally {
-            try {
-                conexao.close();
-            } catch (SQLException ex) {
-                JOptionPane.showMessageDialog(null, ex);
-            }
-        }
-    }
-
-    /**
-     * método usado para setar os campos de texto com o conteúdo da tabela
-     */
-    private void setarCampos() {
-        int setar = tblClientes.getSelectedRow();
-        txtCliId.setText(tblClientes.getModel().getValueAt(setar, 0).toString());
-        txtCliNome.setText(tblClientes.getModel().getValueAt(setar, 1).toString());
-        txtCliCor.setText(tblClientes.getModel().getValueAt(setar, 2).toString());
-        txtCliRaca.setText(tblClientes.getModel().getValueAt(setar, 3).toString());
-        txtCliDataNasc.setText(tblClientes.getModel().getValueAt(setar, 4).toString());
-        txtCliMae.setText(tblClientes.getModel().getValueAt(setar, 5).toString());
-        txtCliPai.setText(tblClientes.getModel().getValueAt(setar, 6).toString());
-        txtCliTelMae.setText(tblClientes.getModel().getValueAt(setar, 7).toString());
-        txtCliTelPai.setText(tblClientes.getModel().getValueAt(setar, 8).toString());
-        txtCliRua.setText(tblClientes.getModel().getValueAt(setar, 9).toString());
-        txtCliN.setText(tblClientes.getModel().getValueAt(setar, 10).toString());
-        txtCliComp.setText(tblClientes.getModel().getValueAt(setar, 11).toString());
-        txtCliRef.setText(tblClientes.getModel().getValueAt(setar, 12).toString());
-        txtCliBairro.setText(tblClientes.getModel().getValueAt(setar, 13).toString());
-        txtCliCid.setText(tblClientes.getModel().getValueAt(setar, 14).toString());
-        txtCliCEP.setText(tblClientes.getModel().getValueAt(setar, 15).toString());
-        txtCliEmail.setText(tblClientes.getModel().getValueAt(setar, 16).toString());
-
-
-        
-        btnAlterar.setEnabled(true);
-        btnRemover.setEnabled(true);
     }
 
     private void editarCliente() {
@@ -202,9 +157,6 @@ public class TelaConHospedes extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        txtCliPesquisar = new javax.swing.JTextField();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tblClientes = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         btnAlterar = new javax.swing.JButton();
@@ -222,9 +174,7 @@ public class TelaConHospedes extends javax.swing.JInternalFrame {
         jLabel5 = new javax.swing.JLabel();
         txtCliCor = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        jLabel20 = new javax.swing.JLabel();
-        txtCliId = new javax.swing.JTextField();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        cboCat = new javax.swing.JComboBox<>();
         jPanel1 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         txtCliMae = new javax.swing.JTextField();
@@ -252,23 +202,10 @@ public class TelaConHospedes extends javax.swing.JInternalFrame {
         jLabel18 = new javax.swing.JLabel();
         txtCliBairro = new javax.swing.JTextField();
         btnSearch = new javax.swing.JButton();
+        jLabel20 = new javax.swing.JLabel();
+        txtCliId = new javax.swing.JTextField();
 
         setClosable(true);
-
-        tblClientes.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        tblClientes.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        tblClientes.setDragEnabled(true);
-        jScrollPane1.setViewportView(tblClientes);
 
         jButton1.setText("PESQUISAR");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -330,10 +267,12 @@ public class TelaConHospedes extends javax.swing.JInternalFrame {
         jLabel6.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jLabel6.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
 
-        jLabel20.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel20.setText("N. Cadastro:");
-
-        txtCliId.setEnabled(false);
+        cboCat.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione", "Macho", "Femea" }));
+        cboCat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cboCatActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -342,18 +281,6 @@ public class TelaConHospedes extends javax.swing.JInternalFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jLabel4)
-                        .addGap(31, 31, 31)
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txtCliNome, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel5)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txtCliCor, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jPanel3Layout.createSequentialGroup()
@@ -364,11 +291,22 @@ public class TelaConHospedes extends javax.swing.JInternalFrame {
                                 .addComponent(jLabel2)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(txtCliRaca, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel20)
-                        .addGap(14, 14, 14)
-                        .addComponent(txtCliId, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 82, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addComponent(jLabel4)
+                                .addGap(31, 31, 31)
+                                .addComponent(cboCat, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(txtCliNome, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel5)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(txtCliCor, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 82, Short.MAX_VALUE)))
                 .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(46, 46, 46))
         );
@@ -384,13 +322,9 @@ public class TelaConHospedes extends javax.swing.JInternalFrame {
                             .addComponent(jLabel5)
                             .addComponent(txtCliCor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jLabel20)
-                                .addComponent(txtCliId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jLabel2)
-                                .addComponent(txtCliRaca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel2)
+                            .addComponent(txtCliRaca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel3)
@@ -398,7 +332,7 @@ public class TelaConHospedes extends javax.swing.JInternalFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel4)
-                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(cboCat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(17, Short.MAX_VALUE))
         );
@@ -612,16 +546,21 @@ public class TelaConHospedes extends javax.swing.JInternalFrame {
             }
         });
 
+        jLabel20.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel20.setText("N. Cadastro:");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(17, 17, 17)
-                        .addComponent(txtCliPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(12, 12, 12)
+                        .addGap(80, 80, 80)
+                        .addComponent(jLabel20)
+                        .addGap(14, 14, 14)
+                        .addComponent(txtCliId, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(29, 29, 29)
                         .addComponent(btnSearch)
                         .addGap(43, 43, 43)
                         .addComponent(jButton1)
@@ -633,29 +572,26 @@ public class TelaConHospedes extends javax.swing.JInternalFrame {
                         .addComponent(jButton2))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 769, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
-                .addContainerGap(12, Short.MAX_VALUE))
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 775, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtCliPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jButton1)
                         .addComponent(jButton2)
                         .addComponent(btnAlterar)
                         .addComponent(btnRemover)
-                        .addComponent(btnSearch)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 442, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                        .addComponent(btnSearch))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel20)
+                        .addComponent(txtCliId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 537, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -666,7 +602,7 @@ public class TelaConHospedes extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        setarCampos();
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void txtCliDataNascActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCliDataNascActionPerformed
@@ -697,14 +633,18 @@ public class TelaConHospedes extends javax.swing.JInternalFrame {
         pesquisarCliente();
     }//GEN-LAST:event_btnSearchActionPerformed
 
+    private void cboCatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboCatActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cboCatActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAlterar;
     private javax.swing.JButton btnRemover;
     private javax.swing.JButton btnSearch;
+    private javax.swing.JComboBox<String> cboCat;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -728,9 +668,7 @@ public class TelaConHospedes extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable tblClientes;
     private javax.swing.JTextField txtCliBairro;
     private javax.swing.JTextField txtCliCEP;
     private javax.swing.JTextField txtCliCid;
@@ -743,7 +681,6 @@ public class TelaConHospedes extends javax.swing.JInternalFrame {
     private javax.swing.JTextField txtCliN;
     private javax.swing.JTextField txtCliNome;
     private javax.swing.JTextField txtCliPai;
-    private javax.swing.JTextField txtCliPesquisar;
     private javax.swing.JTextField txtCliRaca;
     private javax.swing.JTextField txtCliRef;
     private javax.swing.JTextField txtCliRua;
